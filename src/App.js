@@ -20,19 +20,8 @@ function App() {
     setTodos([...todos,{completed:"",name:task}]);
   }
   function removeTask(list) {
-    console.log(list);
-    setTodos(list);
-    console.log("todos", todos)
+    setTodos([...list]);
   }
-
-
-  useEffect(() => {
-    console.log("anan")
-    return () => {
-      console.log("baban")
-    }
-  }, [setTodos])
-  
 
   return (
     <div>

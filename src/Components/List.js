@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Task from "./Task"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 
 function List({todos,onChange}) {
     const [list, setList]= useState(todos)
@@ -10,6 +10,9 @@ function List({todos,onChange}) {
         setList(list);
         onChange(list);
     }
+    useEffect(() => {
+        setList(todos)
+    }, [todos])
 
     return (
         <ul class="todo-list">
