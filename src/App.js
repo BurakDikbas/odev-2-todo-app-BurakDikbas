@@ -10,12 +10,16 @@ import { useState } from "react"
 
 
 function App() {
-  const [todos, setTodos] = useState("");
-  function handleChange(newValue) {
-    debugger;
-    console.log(todos)
-    setTodos(newValue)
+  const [todos, setTodos] = useState([
+    {completed:"completed", name:"Learn JavaScript"},
+    {completed:"", name:"Learn React"},
+    {completed:"", name:"Have a life!"},
+    ]);
+
+  function handleChange(task) {
+    setTodos([...todos,{completed:"",name:task}]);
   }
+
   return (
     <div>
       <section class="todoapp">
@@ -26,8 +30,8 @@ function App() {
         <section class="main">
           <input class="toggle-all" type="checkbox" />
           <label htmlFor="toggle-all">Mark all as complete</label>
-          <List />
-          <Filter />
+          <List list={todos} />
+          <Filter list={todos}/>
         </section>
       </section>
       <Footer />

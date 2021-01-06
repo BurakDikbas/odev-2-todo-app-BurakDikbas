@@ -5,8 +5,14 @@ import { useState } from "react"
 function NewTodo(props) {
     const [task, setTask] = useState("");
     
+    function onSubmit(e) {
+        e.preventDefault();
+        props.onChange(e.target[0].value);
+    }
+
+
     return (
-        <form onChange={props.handleChange}>
+        <form onSubmit={(e)=>onSubmit(e)}>
             <input className="new-todo"
                 placeholder={props.placeholder}
                 autoFocus

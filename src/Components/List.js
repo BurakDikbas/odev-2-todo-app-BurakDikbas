@@ -2,12 +2,8 @@ import React from 'react'
 
 import Task from "./Task"
 
-function List() {
-    const list=[
-        {completed:"completed", name:"Learn JavaScript"},
-        {completed:"", name:"Learn React"},
-        {completed:"", name:"Have a life!"},
-    ]
+function List({list}) {
+
     return (
         <ul class="todo-list">
             {list.map((task, i)=>
