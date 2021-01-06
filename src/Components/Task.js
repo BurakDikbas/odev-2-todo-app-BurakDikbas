@@ -2,12 +2,11 @@ import React from 'react'
 import {useState} from "react"
 
 function Task(props) {
-    const [checked, setChecked] = useState(props.completed ? true : false)
+    const [checked, setChecked] = useState(props.checked ? true : false)
     function handleInputChange(e) {
         setChecked(e.target.checked);
-        
+        props.onChange(props.id, e.target.checked)
     }
-
     function removeId(key) {
         props.onChange(key)
         

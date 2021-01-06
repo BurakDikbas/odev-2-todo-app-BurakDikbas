@@ -11,15 +11,16 @@ import { useState,useEffect } from "react"
 
 function App() {
   const [todos, setTodos] = useState([
-    {completed:"completed", name:"Learn JavaScript"},
-    {completed:"", name:"Learn React"},
-    {completed:"", name:"Have a life!"},
+    {checked:true, name:"Learn JavaScript"},
+    {checked:false, name:"Learn React"},
+    {checked:false, name:"Have a life!"},
     ]);
 
   function handleChange(task) {
     setTodos([...todos,{completed:"",name:task}]);
   }
-  function removeTask(list) {
+
+  function setTask(list) {
     setTodos([...list]);
   }
 
@@ -33,8 +34,8 @@ function App() {
         <section class="main">
           <input class="toggle-all" type="checkbox" />
           <label htmlFor="toggle-all">Mark all as complete</label>
-          <List todos={todos} onChange={(list)=>removeTask(list)}/>
-          <Filter list={todos}/>
+          <List todos={todos} onChange={(list)=>setTask(list)}/>
+          <Filter todos={todos}/>
         </section>
       </section>
       <Footer />

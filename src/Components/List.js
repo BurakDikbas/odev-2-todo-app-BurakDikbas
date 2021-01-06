@@ -10,6 +10,12 @@ function List({todos,onChange}) {
         setList(list);
         onChange(list);
     }
+
+    function changedChecked(id, isChecked) {
+        list[id].checked=isChecked;
+        onChange(list);
+    }
+    
     useEffect(() => {
         setList(todos)
     }, [todos])
@@ -17,7 +23,7 @@ function List({todos,onChange}) {
     return (
         <ul class="todo-list">
             {list.map((task, i)=>
-            <Task key={i} id={i} completed={task.completed} task={task.name} onChange={handleSetList}/>
+            <Task key={i} id={i} checked={task.checked} task={task.name} onChange={handleSetList, changedChecked}/>
             )}
         </ul>
         
