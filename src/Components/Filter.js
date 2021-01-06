@@ -3,11 +3,15 @@ import ClearBtn from './ClearBtn'
 import FilterBtn from './FilterBtn'
 import {useState, useEffect} from "react"
 
-function Filter({todos}) {
+function Filter({todos, onChange}) {
     const [list, setList]= useState(todos)
     useEffect(() => {
         setList(todos)
     }, [todos])
+
+function handleChange(filterParam) {
+    onChange(filterParam)
+}
 
     return (
     <footer class="footer">
@@ -16,13 +20,13 @@ function Filter({todos}) {
             </span>
             <ul class="filters">
                 <li>
-                    <FilterBtn selected="selected" name="All"/>
+                    <FilterBtn selected="selected" name="All" onChange={handleChange}/>
                 </li>
                 <li>
-                    <FilterBtn name="Active"/>
+                    <FilterBtn name="Active" onChange={handleChange}/>
                 </li>
                 <li>
-                    <FilterBtn name="Completed"/>
+                    <FilterBtn name="Completed" onChange={handleChange}/>
                 </li>
             </ul>
 
