@@ -6,7 +6,7 @@ import NewTodo from "./Components/NewTodo"
 import List from "./Components/List"
 import Footer from "./Components/Footer"
 import Filter from "./Components/Filter"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 
 
 function App() {
@@ -19,6 +19,20 @@ function App() {
   function handleChange(task) {
     setTodos([...todos,{completed:"",name:task}]);
   }
+  function removeTask(list) {
+    console.log(list);
+    setTodos(list);
+    console.log("todos", todos)
+  }
+
+
+  useEffect(() => {
+    console.log("anan")
+    return () => {
+      console.log("baban")
+    }
+  }, [setTodos])
+  
 
   return (
     <div>
@@ -30,7 +44,7 @@ function App() {
         <section class="main">
           <input class="toggle-all" type="checkbox" />
           <label htmlFor="toggle-all">Mark all as complete</label>
-          <List list={todos} />
+          <List todos={todos} onChange={(list)=>removeTask(list)}/>
           <Filter list={todos}/>
         </section>
       </section>

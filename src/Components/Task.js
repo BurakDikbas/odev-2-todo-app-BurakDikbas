@@ -7,12 +7,17 @@ function Task(props) {
         setChecked(e.target.checked);
         
     }
+
+    function removeId(key) {
+        props.onChange(key)
+        
+    }
     return (
         <li className={checked ? "completed" : ""}>
             <div class="view">
                 <input class="toggle" type="checkbox" onChange={handleInputChange} checked={checked} />
                 <label>{props.task}</label>
-                <button class="destroy"></button>
+                <button class="destroy" onClick={()=>removeId(props.id)}></button>
             </div>
         </li>
     )
